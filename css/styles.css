@@ -134,8 +134,7 @@ a {
     align-items: center;
 }
 
-
-.nav-link.current {
+.nav-link {
     font-family: var(--font-family);
     font-weight: 500;
     font-size: 16px;
@@ -145,20 +144,40 @@ a {
     padding: 24px 0px 24px 0px;
     display: block;
     position: relative;
-    transition: --var(--transition-duration), --var(--transition-timing-function);
+    transition: color var(--transition-duration), --var(--transition-timing-function);
 }
 
-.nav-link {
-        font-family: var(--font-family);
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 1.5;
-        letter-spacing: 0.02em;
-        color: var(--navy-blue);
-        padding: 24px 0px 24px 0px;
-        display: block;
-        position: relative;
-        transition: --var(--transition-duration), --var(--transition-timing-function);
+.nav-link:hover,
+.nav-link:focus {
+    color: var(--ocean);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    display: block;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background-color: transparent; /* Підкреслення для всіх лінків за замовчуванням */
+}
+
+.nav-link:focus::after,
+.nav-link.current::after {
+    background-color: var(--ocean); /* Змінений колір підкреслення для поточної сторінки або при фокусі */
+}
+
+.nav-link.current {
+    color: var(--ocean); /* Змінений колір тексту для поточної сторінки */
+}
+
+.nav-links a:hover,
+.nav-links a:focus,
+.contact-info a:hover,
+.contact-info a:focus {
+    color: var(--ocean);
 }
 
 
@@ -173,41 +192,6 @@ a {
     transition: --var(--transition-duration), --var(--transition-timing-function);
 }
 
-
-.nav-links a:hover,
-.nav-links a:focus,
-.contact-info a:hover,
-.contact-info a:focus {
-    color: var(--ocean);
-
-}
-
-
-.nav-link.current::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0px;
-    display: block;
-    width: 100%;
-    height: 4px;
-    border-radius: 2px;
-    background-color: var(--ocean);
-}
-.nav-link::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0px;
-    display: block;
-    width: 100%;
-    height: 4px;
-    border-radius: 2px;
-}
-.nav-link:hover::after {
-    background-color: var(--ocean);
-    
-}
 
 .services-section {
     padding: 188px 0;
@@ -711,6 +695,7 @@ a {
 .subscribe-section {
     margin-left: 80px;
     
+    
 }
 
 .subscribe-caption {
@@ -719,13 +704,13 @@ a {
     line-height: 1.5;
     letter-spacing: 0.02em;
     color: var(--white);
-    padding-bottom: 16px;
+    margin-bottom: 16px;
 }
 
 .subscribe-input {
     border: 1px solid var(--white);
     border-radius: 4px;
-    width: calc(100% - 185px); /* Змінено ширину input для вміщення кнопки */
+    width: 264px; /* Змінено ширину input для вміщення кнопки */
     height: 40px;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
     background-color: var(--navy-blue);
@@ -734,6 +719,7 @@ a {
     transition-timing-function: var(--transition-timing-function);
     padding: 8px 16px;
     outline: none;
+    margin-right: 24px;
     float: left; /* Додано float для вирівнювання в один рядок */
 }
 
@@ -796,6 +782,7 @@ a {
 
 .modal {
     position: absolute;
+    padding: 72px 24px 24px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -848,21 +835,19 @@ a {
 
 
 .modal-caption {
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 1.5;
-      letter-spacing: 0.02em;
-      text-align: center;
-      color: #2e2f42;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    text-align: center;
+    color: var(--navy-blue);
       margin-bottom: 16px;
-      margin-top: 72px;
 
 }
 
 .modal-form {
     display: flex;
     flex-direction: column;
-    padding: 0 24px 24px 24px;
 }
 
 .modal-form-label {
